@@ -1,8 +1,9 @@
 import styles from "./Calendar.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { AUTO_SELECT_NEXT_DATE, SELECT_DATE } from "../../modules/calendar";
-import { ADD_DISABLE_DAY } from "../../modules/schedule";
+import { ADD_DISABLED_DAY } from "../../modules/schedule";
 import { useEffect, useState } from "react";
+import { RESET_SELECTED_TIME } from "../../modules/schedule";
 const CalendarDateTd = (props) => {
   const dispatch = useDispatch();
   const settedDay = useSelector((state) => state.calendar.settedDay);
@@ -14,7 +15,7 @@ const CalendarDateTd = (props) => {
 
   useEffect(() => {
     if (date.getDay() === 0 || now.valueOf() > date.valueOf()) {
-      dispatch(ADD_DISABLE_DAY(date.toLocaleDateString()));
+      dispatch(ADD_DISABLED_DAY(date.toLocaleDateString()));
     }
   }, []);
   const isDisabled =
@@ -34,6 +35,7 @@ const CalendarDateTd = (props) => {
   const selectDateHandler = () => {
     if (!isDisabled && props.date) {
       dispatch(SELECT_DATE(props.date));
+      dispatch(RESET_SELECTED_TIME());
     }
     return;
   };
