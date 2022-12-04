@@ -1,0 +1,61 @@
+.calendar {
+  flex-grow: 1;
+  background-color: rgb(250, 250, 250);
+  padding: 50px 0;
+  border-radius: 20px;
+  min-height: 550px;
+}
+.calendar_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendar_header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+}
+.header_text {
+  font-size: 1.1rem;
+  color: #555;
+  width: 200px;
+  text-align: center;
+  font-family: "MaplestoryOTFLight";
+}
+.calendar_table {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+.calendar_day {
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
+.calendar_date {
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.calendar_date:last-of-type {
+  border: none;
+}
+.mouse_over {
+  cursor: pointer;
+}
+.mouse_over:hover {
+  background-color: var(--color-orange-400);
+  color: white;
+}
+.disabled {
+  background-color: #eee;
+  color: #999;
+}
+.active {
+  background-color: var(--color-orange-400);
+  color: white;
+}

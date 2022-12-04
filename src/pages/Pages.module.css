@@ -1,0 +1,9 @@
+.page_container {
+  flex-grow: 1;
+}
+.booking_wrap {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  background-color: rgb(250, 250, 250);
+}

@@ -1,0 +1,38 @@
+.booking_time {
+  padding: 50px 0;
+  width: 250px;
+  margin-right: 40px;
+}
+.booking_time_header {
+  text-align: center;
+  margin-bottom: 35px;
+  font-family: "MaplestoryOTFLight";
+  font-size: 1.1rem;
+  color: var(--color-orange-500);
+}
+.booking_time_list {
+  max-height: 400px;
+  overflow: auto;
+}
+.booking_time_list::-webkit-scrollbar {
+  width: 3px;
+}
+.booking_time_list::-webkit-scrollbar-thumb {
+  background-color: var(--color-orange-300);
+  border-radius: 10px;
+}
+.booking_time_list::-webkit-scrollbar-track {
+  background-color: var(--color-orange-200);
+  border-radius: 10px;
+}
+.booking_time_item {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  gap: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
