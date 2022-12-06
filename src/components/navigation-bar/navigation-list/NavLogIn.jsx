@@ -1,13 +1,16 @@
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
-const NavLogIn = (props) => {
+import { Link } from "react-router-dom";
+const NavLogIn = () => {
   return (
     <li>
-      <div onClick={props.onLogIn}>
-        <span>
-          <LoginOutlinedIcon />
-        </span>
-        <span>로그인</span>
-      </div>
+      <Link to="/login">
+        <div>
+          <span>
+            <LoginOutlinedIcon />
+          </span>
+          <span>로그인</span>
+        </div>
+      </Link>
     </li>
   );
 };

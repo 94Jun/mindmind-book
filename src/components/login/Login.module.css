@@ -1,0 +1,130 @@
+.login {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  display: flex;
+}
+.background_wrap {
+  width: 60%;
+  min-height: 100vh;
+}
+.login_background {
+  background-image: url(/public/images/login_background1.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.login_content {
+  flex-grow: 1;
+}
+.logo_wrap {
+  display: flex;
+  justify-content: center;
+}
+.login_text {
+  font-size: 1.5rem;
+  font-family: "MaplestoryOTFLight";
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 50px 0;
+  color: #555;
+}
+
+.login_input_wrap {
+  width: 60%;
+  margin: 0 auto;
+  border-bottom: 1px solid #aaa;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+.login_input {
+  width: 100%;
+  background-color: inherit;
+  margin: 0 auto;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+}
+.login_input:focus {
+  outline: none;
+  background-color: var(--color-orange-100);
+}
+.invalid_text {
+  width: 60%;
+  margin: 0 auto;
+  color: tomato;
+  padding: 10px;
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.find_wrap {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.find_wrap > span {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+.find_password {
+  cursor: pointer;
+}
+.find_password:hover {
+  color: #666;
+}
+.login_btn_wrap {
+  width: 50%;
+  margin: 20px auto;
+}
+.login_btn {
+  width: 100%;
+}
+.or {
+  text-align: center;
+  color: #777;
+}
+.google_login_btn_wrap {
+  width: 50%;
+  margin: 20px auto;
+}
+.google_login_btn {
+  width: 100%;
+  font-size: 1.1rem;
+  background-color: white;
+  border-radius: 5px;
+  padding: 7px 20px;
+  cursor: pointer;
+  color: #777;
+  border: 1px solid #ccc;
+}
+.google_login_btn > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.google_login_btn:hover {
+  background-color: #eee;
+  box-shadow: 2px 2px 10px #ccc;
+}
+.sign_up_wrap {
+  width: 60%;
+  margin: 50px auto;
+  padding: 10px;
+  color: #666;
+  text-align: center;
+}
+.sign_up {
+  margin-left: 10px;
+  text-decoration: underline;
+  color: #2768aa;
+  cursor: pointer;
+}

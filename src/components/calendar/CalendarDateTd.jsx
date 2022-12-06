@@ -9,8 +9,9 @@ const CalendarDateTd = (props) => {
   const settedDay = useSelector((state) => state.calendar.settedDay);
   const selectedDay = useSelector((state) => state.calendar.selectedDay);
   const disabledDay = useSelector((state) => state.schedule.disabledDay);
+  const today = useSelector((state) => state.calendar.today);
   const [isSelected, setIsSelected] = useState(false);
-  const now = new Date();
+  const now = new Date(today.year, today.month - 1, today.date);
   const date = new Date(settedDay.year, settedDay.month - 1, props.date);
 
   useEffect(() => {

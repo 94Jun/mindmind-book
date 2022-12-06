@@ -9,18 +9,17 @@ import NavLogOut from "./navigation-list/NavLogOut";
 import NavConsultingLog from "./navigation-list/NavConsultingLog";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { LOG_IN, LOG_OUT } from "../../modules/login";
+import { LOG_OUT } from "../../modules/login";
 import NavLogIn from "./navigation-list/NavLogIn";
+import { SET_CURRENT_USER } from "../../modules/user";
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   //로그인 여부 확인(true/false)
-  const logInHandler = () => {
-    dispatch(LOG_IN());
-  };
   const logOutHandler = () => {
     dispatch(LOG_OUT());
+    dispatch(SET_CURRENT_USER(""));
     navigate("/", { replace: true });
   };
   let content = isLoggedIn ? (
@@ -30,7 +29,7 @@ const NavBar = () => {
       <NavLogOut onLogOut={logOutHandler} />
     </>
   ) : (
-    <NavLogIn onLogIn={logInHandler} />
+    <NavLogIn />
   );
 
   return (

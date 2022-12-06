@@ -2,8 +2,13 @@ import styles from "./BookingTime.module.css";
 import BookingTimeHeader from "./BookingTimeHeader";
 import { useDispatch, useSelector } from "react-redux";
 import BookingTimeItem from "./BookingTimeItem";
-import { SET_DISABLED_TIME } from "../../modules/schedule";
+import {
+  SET_DISABLED_TIME,
+  SET_DISABLED_TIME_LIST,
+} from "../../modules/schedule";
 import { useEffect } from "react";
+import { db } from "../../config/firebase";
+import { getDocs, collection } from "firebase/firestore";
 
 const BookingTime = () => {
   const dispatch = useDispatch();
@@ -29,6 +34,19 @@ const BookingTime = () => {
   );
 
   //현재 컴포넌트에서 오늘에 해당하는 disabledTime 추가... 시간이 지남에 따라 push
+  useEffect(() => {
+    const getDisalbedTimeList = async () => {
+      const querySnapshot = await getDocs(collection(db, "disabledTimeList"));
+      const loadedDisabledTimeList = [];
+      querySnapshot.forEach((doc) => {
+        loadedDisabledTimeList.push({ date: doc.id, time: doc.data().time });
+      });
+      dispatch(SET_DISABLED_TIME_LIST(loadedDisabledTimeList));
+    };
+    getDisalbedTimeList();
+  }, []);
+
+  //DB에서 disableTimeList 를 받아와서 state 업데이트
 
   useEffect(() => {
     const selectedDate = new Date(
@@ -40,15 +58,15 @@ const BookingTime = () => {
     const currentObj = disabledTimeList.find((item) => {
       return selectedDate === item.date;
     });
-    if (currentObj?.time) {
+    if (currentObj) {
       currentObj.time.map((time) => {
         updatedDisabledTime.push(time);
       });
     }
     dispatch(SET_DISABLED_TIME(updatedDisabledTime));
-  }, [selectedDay]);
+  }, [selectedDay, disabledTimeList]);
   //현재 선택된 날짜의 disableTime을 세팅
-  //selected가 업데이트 될 때마다 실행
+  //selectedDay가 업데이트 될 때마다 실행
 
   return (
     <div className={styles.booking_time}>

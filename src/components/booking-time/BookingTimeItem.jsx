@@ -2,14 +2,19 @@ import styles from "./BookingTime.module.css";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { SELECT_TIME } from "../../modules/schedule";
+import { useEffect, useState } from "react";
 
 const BookingTimeItem = (props) => {
   const dispatch = useDispatch();
   const selectedTime = useSelector((state) => state.schedule.selectedTime);
   const disabledTime = useSelector((state) => state.schedule.disabledTime);
-  const isDisalbed = disabledTime.includes(props.time);
+  const [isDisabled, setIsDisabled] = useState(false);
+  useEffect(() => {
+    setIsDisabled(disabledTime.includes(props.time));
+  }, [disabledTime]);
+
   const selectTimeHandler = () => {
-    if (!isDisalbed) {
+    if (!isDisabled) {
       dispatch(SELECT_TIME(props.time));
     }
   };
@@ -18,7 +23,7 @@ const BookingTimeItem = (props) => {
     <li
       className={`${styles.booking_time_item} ${
         selectedTime === props.time && styles.selected
-      } ${isDisalbed && styles.disabled}`}
+      } ${isDisabled && styles.disabled}`}
       onClick={selectTimeHandler}
     >
       <span>

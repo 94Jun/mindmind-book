@@ -4,12 +4,7 @@ const initialState = {
   disabledDay: [],
   //toLocaleDateString() 형식으로 저장
   selectedTime: "",
-  disabledTimeList: [
-    {
-      date: "2022. 12. 5.",
-      time: ["09:00"],
-    },
-  ],
+  disabledTimeList: [],
   disabledTime: [],
 };
 const schedule = createSlice({
@@ -29,6 +24,9 @@ const schedule = createSlice({
     SET_DISABLED_TIME: (state, action) => {
       state.disabledTime = action.payload;
     },
+    SET_DISABLED_TIME_LIST: (state, action) => {
+      state.disabledTimeList = action.payload;
+    },
   },
 });
 export const {
@@ -36,5 +34,6 @@ export const {
   SELECT_TIME,
   RESET_SELECTED_TIME,
   SET_DISABLED_TIME,
+  SET_DISABLED_TIME_LIST,
 } = schedule.actions;
 export default schedule.reducer;

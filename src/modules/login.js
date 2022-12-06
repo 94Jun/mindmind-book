@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoggedIn: localStorage.getItem("isLoggedIn"),
-  currentUser: {},
+  currentUser: localStorage.getItem("currentUser"),
 };
 
 const login = createSlice({
@@ -10,13 +10,15 @@ const login = createSlice({
   reducers: {
     LOG_IN: (state, action) => {
       state.isLoggedIn = true;
-      state.currentUser = action.payload;
       localStorage.setItem("isLoggedIn", true);
+      state.currentUser = action.payload;
+      localStorage.setItem("currentUser", action.payload);
     },
     LOG_OUT: (state) => {
       state.isLoggedIn = false;
-      state.currentUser = {};
       localStorage.removeItem("isLoggedIn");
+      state.currentUser = "";
+      localStorage.removeItem("currentUser");
     },
   },
 });

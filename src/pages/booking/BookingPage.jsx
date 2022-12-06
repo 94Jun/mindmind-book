@@ -1,6 +1,8 @@
 import BookingTime from "../../components/booking-time/BookingTime";
+import Test from "../../components/booking-time/Test";
 import Calendar from "../../components/calendar/Calendar";
 import styles from "../Pages.module.css";
+
 const BookingPage = () => {
   return (
     <div className={styles.page_container}>
@@ -13,6 +15,7 @@ const BookingPage = () => {
         <Calendar />
         <BookingTime />
       </div>
+      <Test />
     </div>
   );
 };
